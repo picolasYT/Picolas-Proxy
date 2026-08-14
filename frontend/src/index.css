@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #14121f 0%, #07070c 55%);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c2c3a;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card {
+  @apply bg-base-850/80 border border-base-700 rounded-2xl backdrop-blur-sm;
+}
+
+.gradient-text {
+  @apply bg-picolas-gradient bg-clip-text text-transparent;
+}
+
+.btn-primary {
+  @apply bg-picolas-gradient text-white font-medium rounded-xl px-4 py-2 shadow-glow transition-transform active:scale-95 hover:brightness-110 disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-secondary {
+  @apply bg-base-700 hover:bg-base-600 text-slate-200 font-medium rounded-xl px-4 py-2 transition-colors disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-danger {
+  @apply bg-red-600/20 text-red-400 border border-red-600/40 hover:bg-red-600/30 font-medium rounded-xl px-4 py-2 transition-colors disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.input {
+  @apply bg-base-900 border border-base-700 rounded-lg px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/60 w-full;
+}
+
+.label {
+  @apply text-xs uppercase tracking-wide text-slate-500 font-medium mb-1 block;
+}

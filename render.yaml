@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: picolas-proxy
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PANEL_ADMIN_USER
+        sync: false
+      - key: PANEL_ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ALLOW_EXTERNAL_PROXY
+        value: "false"
+    # NOTA: Render sólo expone públicamente el puerto HTTP principal (process.env.PORT),
+    # que aquí sirve el panel + API. Los puertos del proxy HTTP/SOCKS5 (configurables
+    # desde el panel) escuchan en el mismo contenedor pero NO son accesibles desde
+    # internet en un Web Service estándar de Render, salvo que uses un plan/servicio
+    # que soporte TCP público. Para usar Picolas Proxy como proxy real accesible desde
+    # fuera, despliégalo en tu propia PC, VPS o sandbox con acceso de red directo.

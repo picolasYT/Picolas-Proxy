@@ -1,0 +1,36 @@
+{
+  "name": "picolas-proxy",
+  "version": "1.0.0",
+  "description": "Picolas Proxy — convierte tu PC, VPS o sandbox en un proxy administrable desde un panel web. \"Your network. Your proxy.\"",
+  "license": "MIT",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev:server": "tsx watch server/index.ts",
+    "dev:client": "cd frontend && npm run dev",
+    "dev": "concurrently -n server,client -c blue,magenta \"npm:dev:server\" \"npm:dev:client\"",
+    "build:client": "cd frontend && npm install && npm run build",
+    "build:server": "tsc -p tsconfig.json",
+    "build": "npm run build:client && npm run build:server",
+    "postinstall": "npm run build",
+    "start": "node dist/server/index.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "cookie": "^0.6.0",
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "@types/ws": "^8.5.10",
+    "@types/cookie": "^0.6.0",
+    "concurrently": "^8.2.2",
+    "tsx": "^4.15.6",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
